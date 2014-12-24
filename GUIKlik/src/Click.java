@@ -1,9 +1,72 @@
+/**
+ * Zadatak: Napraviti prozor koji ima dva dugmeta (Button i Button2) treba
+ * implementirati program tako da svaki put kada korisnik klikne na jedno
+ * dugme, da ga otvori i u njemu piše "Kliknuto", kada to ponovi na drugom
+ * dugmetu na njemu također treba ispisati "Kliknuto", ali u tom slučaju da
+ * zatvori prvo dugme!
+ * 
+ * @author mustafaademovic
+ * 
+ */
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Click {
 
+	static JButton button;
+	static JButton button2;
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		JFrame window = new JFrame("Window");
+
+		ButtonHandler listener = new ButtonHandler();
+
+		button = new JButton("Button 1");// Prvo dugme
+		button2 = new JButton("Button 2");// Drugo dugme
+
+		button.addActionListener(listener);
+
+		button2.addActionListener(listener);
+
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		panel.add(button, BorderLayout.WEST);
+		panel.add(button2, BorderLayout.EAST);
+
+		window.setSize(350, 150);// Dimenzije prozora
+		window.add(panel);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Kada kliknem na x program prekida s radom
+		window.setVisible(true);// Vidljivost prozora
 
 	}
 
-}
+	/**
+	 * U klasi ButtonHandler u kojoj pravimo novi objekat click i
+	 * njemu dodijeljujemo string "Kliknuto" tako da kada god na nekom dugmetu
+	 * bude pisalo "Kliknuto" na drugom će pisati njegov string "Button 1",
+	 *  ako je prvi ili "Button 2" ,ako je drugi!
+	 * 
+	 *
+	 */
+	public static class ButtonHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			JButton click = (JButton) e.getSource();
+
+			button.setText("Button 1");
+			button2.setText("Button 2");
+			click.setText("Kliknuto");
+
+		}// Kraj metode actionPerformed
+
+	}// Kraj klase ButtonHandler
+
+}// Kraj klase Click
+
