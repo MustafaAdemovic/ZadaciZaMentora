@@ -7,8 +7,7 @@
  */
 public class ClassRoom {
 	private Student[][] raspored;
-	private int redRandom = (int)(Math.random() * 6);
-	private int kolonaRandom = (int)(Math.random() * 4);
+	
 
 	// Konstruktor
 	public ClassRoom() {
@@ -50,11 +49,15 @@ public class ClassRoom {
 		raspored[5][3] = new Student("Emina Muratovic");
 
 	}// Kraj metode sortStudent
-
+	
+	
 	/**
 	 * Metoda ispisuje random studenta, svaki put ispise drugug studenta
 	 */
 	public void ispisiRandomStudenta() {
+		 int redRandom = (int)(Math.random() * 6);
+		 int kolonaRandom = (int)(Math.random() * 4);
+		
 		System.out.println("\nRandom student je:\n"
 				+ raspored[redRandom][kolonaRandom]);
 	}// Kraj metode ispisiRandomStudenta

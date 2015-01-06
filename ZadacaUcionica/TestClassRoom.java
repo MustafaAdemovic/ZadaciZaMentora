@@ -6,7 +6,14 @@ public class TestClassRoom {
 		bitCamp.sortStudents();
 		bitCamp.writeStudent();
 		bitCamp.ispisiRandomStudenta();
+		for (int i = 0; i < 20; i++) {
+			bitCamp.ispisiRandomStudenta();
+			}
+
+		
+
 
 	}
+
 
 }
